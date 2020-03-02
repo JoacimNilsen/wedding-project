@@ -45,7 +45,7 @@ app.post('/admin', async (req, res) => {
   try {
     const { username, email, password } = req.body
     const newAdmin = await new Admin({
-      usename,
+      username,
       email,
       password: bcrypt.hashSync(password)
     })
@@ -93,7 +93,7 @@ app.get('guests', authenticateUser)
 app.get('/guests', async (req, res) => {
   const query = queryBuilder(req, res)
   //If true: filter on query, else: return all guests
-  const quests = query  
+  const guests = query  
     ? await Guest.find(query)
     : await Guest.find().sort('last_name').sort('first_name')
   // Return matching results, else return error  

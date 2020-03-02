@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import crypto from 'crypto'
 
-export const User = mongoose.model('Admin', {
+export const Admin = mongoose.model('Admin', {
   username: {
     type: String,
     minlength: 2,
@@ -25,5 +25,5 @@ export const User = mongoose.model('Admin', {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex')
   }
-  
+
 })

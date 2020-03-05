@@ -1,9 +1,19 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { GlobalStyle } from 'styles/GlobalStyle'
+import { Main } from 'pages/Main'
 
 export const App = () => {
   return (
-    <div>
-      Find me in src/app.js!
-    </div>
+    <>
+   <GlobalStyle />
+   <BrowserRouter>
+    <Switch>
+      <Route path='/' exact>
+        <Main />
+      </Route>
+    </Switch>
+   </BrowserRouter>
+   </>
   )
 }

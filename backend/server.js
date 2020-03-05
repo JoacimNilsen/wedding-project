@@ -59,7 +59,6 @@ app.post('/admin', async (req, res) => {
 })
 
 // Route to login for admin
-// Route to login for admin
 app.post('/login', async (req, res) => {
   try {
     const admin = await Admin.findOne({ username: req.body.username })

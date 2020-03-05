@@ -5,7 +5,7 @@ export const Header = styled.h1`
   letter-spacing: 1.5px;
   font-size: 25px;
   font-weight: 700;
-  color: #B2621C;
+  color: #white;
   display: flex;
   @media (min-width: 668px) {
 
@@ -16,5 +16,5 @@ export const Header = styled.h1`
   letter-spacing: 1.5px;
   font-size: 18px;
   text-align: center;
-  color: #B2621C;
+  color: #white;
   `

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Navbar } from 'components/Navbar'
+import { HeroImage } from 'library/HeroImage'
 import { Header, InfoText } from 'styles/TextStyle'
 // import { Button } from 'library/Button'
 
@@ -27,6 +28,7 @@ export const Main = () => {
         <HeadWrapper>
         <Header>Natalie & Kenneth</Header>
         <InfoText>6/6-2020, 14:30 | Enskede Kyrka</InfoText>
+        <HeroImage />
         </HeadWrapper>
     </>
   )

@@ -12,7 +12,6 @@ border: 3px solid #FFF2EA;
 border-radius: 50%;
 width: 500px;
 height: 500px;
-margin-top: 40px;
 display: none;
   @media (min-width: 851px) {
     display: block;

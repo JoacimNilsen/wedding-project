@@ -36,7 +36,7 @@ export const NavLinks = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 96%;
+  width: 99%;
   height: 80%;
   padding-top: 50px;
   @media (min-width: 668px) {

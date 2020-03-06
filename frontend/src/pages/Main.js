@@ -27,9 +27,12 @@ align-items: center;
 }
 `
 
+const HeroWrapper = styled.div`
+`
+
 const ButtonWrapper = styled.div`
 position: relative;
-top: 35px;
+top: 30px;
 `
 
 

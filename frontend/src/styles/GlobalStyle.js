@@ -9,7 +9,7 @@ html, body {
   box-sizing: border-box;
 }
 body {
-  background: #0D0C1D;
+  background: #2D2A2A;
   color: #EFFFFA;
   font-family: 'Open Sans', sans-serif;
   height: 100vh;

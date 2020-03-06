@@ -5,10 +5,10 @@ export const Header = styled.h1`
   letter-spacing: 1.5px;
   font-size: 25px;
   font-weight: 700;
-  color: #white;
+  color: #FFF2EA;
   display: flex;
   @media (min-width: 668px) {
-
+    font-size: 35px;
   }
   `
 
@@ -16,5 +16,8 @@ export const Header = styled.h1`
   letter-spacing: 1.5px;
   font-size: 18px;
   text-align: center;
-  color: #white;
+  color: #FFF2EA;
+  @media (min-width: 668px) {
+    font-size: 25px;
+  }
   `

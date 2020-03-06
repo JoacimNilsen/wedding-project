@@ -10,12 +10,12 @@ background-position: 50% 20%;
 background-size: cover;
 border: 3px solid white;
 border-radius: 50%;
-width: 300px;
-height: 300px;
+width: 500px;
+height: 500px;
 margin-top: 40px;
-  @media (min-width: 668px) {
-    width: 500px;
-    height: 500px;
+display: none;
+  @media (min-width: 851px) {
+    display: block;
   }
 `
 

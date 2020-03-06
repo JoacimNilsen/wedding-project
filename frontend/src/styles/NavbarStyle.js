@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const NavWrapper = styled.section`
   position: fixed;
-  z-index: 1001;
+  z-index: 1;
   width: 100%;
   height: ${props => (props.active ? '100%' : '10%')};
   top: 0;
@@ -10,7 +10,7 @@ export const NavWrapper = styled.section`
   bottom: 0;
   left: 0;
   padding: 10px;
-  background: ${props => (props.active ? 'rgba(0, 0, 0, 0.6)' : 'none')};  
+  background: ${props => (props.active ? 'rgba(0, 0, 0, 0.8)' : 'none')};  
   @media (min-width: 668px) {
     position: relative;
     background: none;
@@ -20,7 +20,7 @@ export const BurgerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => (props.active ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.3)')};  
+  background: ${props => (props.active ? 'rgba(0, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.6)')};  
   width: 46px;
   height: 42px;
   &:focus {
@@ -37,7 +37,7 @@ export const NavLinks = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 96%;
-  height: 60%;
+  height: 80%;
   padding-top: 50px;
   @media (min-width: 668px) {
     background: none;

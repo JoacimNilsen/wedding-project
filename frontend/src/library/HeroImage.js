@@ -4,7 +4,7 @@ import hero from 'assets/hero.jpg'
 
 
 
-const Hero = styled.div`
+export const Hero = styled.div`
 background-image: url(${hero});
 background-position: 50% 20%;
 background-size: cover;

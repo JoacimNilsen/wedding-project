@@ -6,7 +6,7 @@ import { HeroImage } from 'library/HeroImage'
 import background from 'assets/hero.jpg'
 import desktopBackground from 'assets/desktopBackground.jpg'
 import { Header, InfoText } from 'styles/TextStyle'
-// import { Button } from 'library/Button'
+import { Button } from 'library/Button'
 
 const HeadSection = styled.section`
 position: relative;
@@ -22,12 +22,18 @@ align-items: center;
 @media (min-width: 850px) {
   background: url(${desktopBackground});
   background-position: center;
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 `
 
-export const Main = () => {
+const ButtonWrapper = styled.div`
+position: relative;
+top: 35px;
+`
+
+
+export const Main = () => { 
   return (
     <>
         <Navbar />
@@ -35,7 +41,11 @@ export const Main = () => {
         <HeroImage />
         <Header>Natalie & Kenneth</Header>
         <InfoText>6/6-2020, 14:30 | Enskede Kyrka</InfoText>
-        
+        <Link to={'/rsvp'} tabIndex='-1'>
+          <ButtonWrapper>
+          <Button title='RSVP' />
+          </ButtonWrapper>
+        </Link>
         </HeadSection>
     </>
   )

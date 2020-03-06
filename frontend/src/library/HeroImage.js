@@ -8,7 +8,7 @@ export const Hero = styled.div`
 background-image: url(${hero});
 background-position: 50% 20%;
 background-size: cover;
-border: 3px solid white;
+border: 3px solid #FFF2EA;
 border-radius: 50%;
 width: 500px;
 height: 500px;

@@ -1,26 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Button = styled.button`
-height 40px;
-min-width: 60px;
-border: 5px solid white;
+export const MainButton = styled.button`
+height 60px;
+min-width: 100px;
+font-size: 18px;
+border: 4px solid #FFF2EA;
 background: rgba(0,0,0, 0.2);
+letter-spacing: 1.5px;
 transition: 0.6s;
-color: white;
+color: #FFF2EA;
 cursor: pointer;
 &:hover {
-  background: rgba (255,255,255, 0.2);
+  border-color: #FF9900;
+  color: #FF9900;
+  background: rgba(0,0,0, 0.4);
 }
 &:focus {
-  outline-color: yellow;
+  border-color: #FF9900;
+  outline-color: #FF9900;
   outline-offset: 5px;
 }
-@media (min-width: 668px)
+@media (min-width: 668px) {
   font-size: 24px;
+  min-width: 150px;
+}
 `
 
 export const Button = ({ onClick, title }) => (
 
-  <Button onClick={onClick}>{title}</Button>
+  <MainButton onClick={onClick}>{title}</MainButton>
 )

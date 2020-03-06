@@ -24,7 +24,7 @@ export const BurgerWrapper = styled.div`
   width: 46px;
   height: 42px;
   &:focus {
-    outline-color: #B2621C;
+    outline-color: #FF9900;
     outline-offset: 3px;
   }
   @media (min-width: 668px) {
@@ -60,11 +60,11 @@ export const NavButton = styled.button`
   transition: 0.6s;
   cursor: pointer;
   &:focus {
-    outline-color: #B2621C;
+    outline-color: #FF9900;
     outline-offset: 3px;
   }
   &:hover {
-    color: #B2621C;
+    color: #FF9900;
   }
   @media (min-width: 668px) {
     font-size: 14px;

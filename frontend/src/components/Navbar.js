@@ -29,7 +29,6 @@ export const Navbar = () => {
         />
       </BurgerWrapper>
 
-      {/* Tabindex -1 to not have double tabbing at every link*/}
       <NavLinks active={active === true}>
 
         <Link to={'/'} tabIndex='-1'>

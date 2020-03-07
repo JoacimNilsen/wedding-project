@@ -8,7 +8,7 @@ import desktopBackground from 'assets/desktopBackground.jpg'
 import { Header, InfoText } from 'styles/TextStyle'
 import { Button } from 'library/Button'
 
-const HeadSection = styled.section`
+export const HeadSection = styled.section`
 position: relative;
 display: flex;
 width: 100%;
@@ -25,9 +25,6 @@ align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-`
-
-const HeroWrapper = styled.div`
 `
 
 const ButtonWrapper = styled.div`

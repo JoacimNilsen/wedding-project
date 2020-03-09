@@ -14,6 +14,9 @@ text-align: center;
 align-items: center;
 justify-content: center;
 width: 100%;
+@media (min-width: 668px) {
+  margin-top: 0px;      
+}
 `
 
 const Header = styled.h2`
@@ -34,7 +37,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-around;
 align-items: center;
-@media (min-width: 1047px) {
+@media (min-width: 992px) {
   flex-direction: row;
 }
 `
@@ -54,12 +57,13 @@ const MapWrapper = styled.div`
   background: none;
   display: flex;
   justify-content: center;
+  @media (min-width: 850px)
 
 `
 const Iframe = styled.iframe`
-  max-width: 400px;
+  width: 400px;
   height: 400px;
-  margin: 0;
+  margin: 20px;
   border-radius: 6px;
 `
 

@@ -5,13 +5,13 @@ import desktopBackground from 'assets/desktopBackground.jpg'
 export const MainWrapper = styled.main`
 display: flex;
 width: 100%;
-height: 100vh;
+height: 100%;
 background: url(${desktopBackground});
 background-size: cover;
 background-position: center;
 flex-direction: column;
-justify-content: center;
 align-items: center;
-@media (min-width: 668px) {
+@media (min-width: 992px) {
+  height: 100vh;
 }
 `

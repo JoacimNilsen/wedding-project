@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const MainButton = styled.button`
 height 60px;
 min-width: 100px;
+max-width: 300px;
 font-size: 18px;
 border: 4px solid #FFF2EA;
 background: rgba(0,0,0, 0.2);

@@ -6,13 +6,14 @@ import { Location } from 'pages/Location'
 import { Rsvp } from 'pages/Rsvp'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { guests } from 'reducers/guest'
+import { guests } from './reducers/guests'
 import { ui } from './reducers/ui'
 
 const reducer = combineReducers({
   ui: ui.reducer,
-  guests: guests.reducer
+  guest: guests.reducer
 })
+console.log(reducer)
 
 export const store = configureStore({ reducer })
 

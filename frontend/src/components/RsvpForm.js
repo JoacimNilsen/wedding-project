@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ui } from 'reducers/ui'
-import { sendGuests } from 'reducers/guest'
+import { sendGuests } from 'reducers/guests'
 import { useDispatch } from 'react-redux'
 import { Button } from 'library/Button'
 
@@ -99,7 +99,7 @@ export const RsvpForm = () => {
 
       <label>
         <p>Other</p>
-        <input onChange={event => setFormValues({ ...formValues, other: event.target.value })}
+        <textarea onChange={event => setFormValues({ ...formValues, other: event.target.value })}
           value={formValues.other}
           type='text'
           rows='4'

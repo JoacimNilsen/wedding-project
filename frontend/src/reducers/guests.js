@@ -3,7 +3,7 @@ import { ui } from './ui'
 
 export const guests = createSlice({
   name: 'guests',
-  initialstate: {
+  initialState: {
     guests: [],
     guest: ''
   },

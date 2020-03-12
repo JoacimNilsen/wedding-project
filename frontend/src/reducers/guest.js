@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ui } from './ui'
-import { StaticRouter } from 'react-router'
 
 export const guests = createSlice({
   name: 'guests',
-  initialstate:{
-    guests:[],
+  initialstate: {
+    guests: [],
     guest: ''
   },
   reducers: {
@@ -13,7 +12,7 @@ export const guests = createSlice({
       state.guest = action.payload
     },
     setGuests: (state, action) => {
-      state,guests = action.payload
+      state.guests = action.payload
     },
     addGuest: (state, action) => {
       state.guests.push(action.payload)
@@ -30,9 +29,10 @@ export const fetchGuests = (path) => {
     const accessToken = localStorage.getItem('accessToken')
     dispatch(ui.actions.setLoading(true))
     fetch(`https://kn-wedding-project.herokuapp.com/guests${path}`, {
-      method: 'POST',
-      body: JSON.stringify(guest),
-      headers: { 'Content-type': 'application/json' }
+      method: 'GET',
+      headers: { 'Content-type': 'application/json',
+       Authorization: accessToken
+      }
     })
     .then(res => res.json())
     .then(json => {

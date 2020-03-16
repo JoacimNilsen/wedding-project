@@ -8,14 +8,17 @@ import { Admin } from 'pages/Admin'
 import { PrivateRoute } from 'components/PrivateRoute'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { guests } from './reducers/guests'
-import { ui } from './reducers/ui'
+import { guests } from 'reducers/guests'
+import { ui } from 'reducers/ui'
+import { users } from 'reducers/users'
+import { Footer } from 'components/Footer'
+import { LoginForm } from 'components/LoginForm'
 
 const reducer = combineReducers({
   ui: ui.reducer,
-  guest: guests.reducer
+  guest: guests.reducer,
+  users: users.reducer
 })
-console.log(reducer)
 
 export const store = configureStore({ reducer })
 
@@ -23,6 +26,7 @@ export const App = () => {
   return (
   <Provider store={store}>
    <GlobalStyle />
+   <LoginForm />
    <BrowserRouter>
     <Switch>
 
@@ -41,6 +45,9 @@ export const App = () => {
       <PrivateRoute component={Admin} path='/admin' exact />
 
     </Switch>
+
+    <Footer />
+
    </BrowserRouter>
    </Provider>
   )

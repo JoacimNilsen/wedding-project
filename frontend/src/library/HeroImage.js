@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import hero from 'assets/hero.jpg'
 
-
-
 export const Hero = styled.div`
 background-image: url(${hero});
 background-position: 50% 20%;

@@ -1,17 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const GuestItem = ({ firstName, lastName, email, phone, allergies, other, attending, addedAt, onClickDelete }) => {
+export const GuestItem = ({ guest, onClickDelete }) => {
+  const { firstName, lastName, email, phone, allergies, other, attending } = guest
+
   return (
       <div>
         <div>
           <p>Name: {firstName} {lastName}</p>
           <p>Email: {email}</p>
-          <p>Phone: {Phone}</p>
+          <p>Phone: {phone}</p>
           {allergies && <p>Allergies: {allergies}</p>}
           {other && <p>Other: {other}</p>}
           <p>Attending: {attending}</p>
-          <p>Added: {addedAt}</p>
         </div>
         <div>
           <button onClick={onClickDelete}>Delete</button>

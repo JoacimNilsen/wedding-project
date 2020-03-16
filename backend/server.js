@@ -43,9 +43,8 @@ app.get('/', (req, res) => {
 // Route to create a admin
 app.post('/admin', async (req, res) => {
   try {
-    const { username, email, password } = req.body
+    const { email, password } = req.body
     const newAdmin = await new Admin({
-      username,
       email,
       password: bcrypt.hashSync(password)
     })
@@ -61,10 +60,10 @@ app.post('/admin', async (req, res) => {
 // Route to login for admin
 app.post('/login', async (req, res) => {
   try {
-    const admin = await Admin.findOne({ username: req.body.username })
+    const admin = await Admin.findOne({ email: req.body.email })
     if (admin && bcrypt.compareSync(req.body.password, admin.password)) {
       res.status(201).json({
-        username: admin.username,
+        email: admin.email,
         adminId: admin._id,
         accessToken: admin.accessToken
       })
@@ -72,7 +71,7 @@ app.post('/login', async (req, res) => {
       res.status(401).json({
         statusCode: 401,
         notFound: true,
-        error: 'Login failed, username or password incorrect'
+        error: 'Login failed, email or password incorrect'
       })
     }
   } catch (err) {

@@ -1,23 +1,23 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import cors from 'cors'
-import mongoose from 'mongoose'
-import bcrypt from 'bcrypt-nodejs'
-import { Guest } from './models/guests'
-import { Admin } from './models/admin'
+import express from "express"
+import bodyParser from "body-parser"
+import cors from "cors"
+import mongoose from "mongoose"
+import bcrypt from "bcrypt-nodejs"
+import { Guest } from "./models/guests"
+import { Admin } from "./models/admin"
 
-
+const API_URL = process.env.API_URL || "http://localhost:8080"
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/wedding-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
 const authenticateUser = async (req, res, next) => {
-  const user = await User.findOne({ accessToken: req.header('Authorization') })
+  const user = await User.findOne({ accessToken: req.header("Authorization") })
   if (user) {
     req.user = user
     next()
   } else {
-    res.status(401).json({ loggedOut: true, message: 'You are logged out' })
+    res.status(401).json({ loggedOut: true, message: "You are logged out" })
   }
 }
 
@@ -31,17 +31,17 @@ app.use((req, res, next) => {
   if (mongoose.connection.readyState === 1) {
     next()
   } else {
-    res.status(503).json({ error: 'HTTP Error 503. Service unavaliable' })
+    res.status(503).json({ error: "HTTP Error 503. Service unavaliable" })
   }
 })
 
 // Routes
-app.get('/', (req, res) => {
-  res.send('Joacim´s final project for Technigo 2020')
+app.get("/", (req, res) => {
+  res.send("Joacim´s final project for Technigo 2020")
 })
 
 // Route to create a admin
-app.post('/admin', async (req, res) => {
+app.post("/admin", async (req, res) => {
   try {
     const { email, password } = req.body
     const newAdmin = await new Admin({
@@ -53,12 +53,12 @@ app.post('/admin', async (req, res) => {
   } catch (err) {
     res
       .status(400)
-      .json({ message: 'Error, could not create user', error: err.errors })
+      .json({ message: "Error, could not create user", error: err.errors })
   }
 })
 
 // Route to login for admin
-app.post('/login', async (req, res) => {
+app.post("/login", async (req, res) => {
   try {
     const admin = await Admin.findOne({ email: req.body.email })
     if (admin && bcrypt.compareSync(req.body.password, admin.password)) {
@@ -71,13 +71,11 @@ app.post('/login', async (req, res) => {
       res.status(401).json({
         statusCode: 401,
         notFound: true,
-        error: 'Login failed, email or password incorrect'
+        error: "Login failed, email or password incorrect"
       })
     }
   } catch (err) {
-    res
-      .status(400)
-      .json({ message: 'couldnt find admin', error: err.errors })
+    res.status(400).json({ message: "couldnt find admin", error: err.errors })
   }
 })
 
@@ -85,82 +83,104 @@ app.post('/login', async (req, res) => {
 
 const queryBuilder = (req, res) => {
   const { name, attending } = req.query
-  const nameRegex = new RegExp(name, 'i')
+  const nameRegex = new RegExp(name, "i")
   let query = {}
   if (name) {
-    query = { $or: [{ 'first_name': nameRegex }, { 'last_name': nameRegex }] }
+    query = { $or: [{ first_name: nameRegex }, { last_name: nameRegex }] }
   }
   if (attending) {
-    query['isAttending'] = { $eq: attending }
+    query["isAttending"] = { $eq: attending }
   }
   return query
 }
 
 // Secure endpoint for guestroute, only admin should be able to see this
-app.get('guests', authenticateUser)
-app.get('/guests', async (req, res) => {
+app.get("guests", authenticateUser)
+app.get("/guests", async (req, res) => {
   const query = queryBuilder(req, res)
   // If true: filter on query, else: return all guests
-  const guests = query  
+  const guests = query
     ? await Guest.find(query)
-    : await Guest.find().sort('last_name').sort('first_name')
-  // Return matching results, else return error  
+    : await Guest.find()
+        .sort("last_name")
+        .sort("first_name")
+  // Return matching results, else return error
   if (guests) {
     res.json({ guests: guests })
   } else {
-    res.status(404).json({ error: 'No guests found' })
+    res.status(404).json({ error: "No guests found" })
   }
 })
 
 // Route for specific guest ID
-app.get('/guests/:id', async (req, res) => {
+app.get("/guests/:id", async (req, res) => {
   const guest = await Guest.findById(req.params.id)
   if (guest) {
     res.json(guest)
   } else {
-    res.status(404).json({ error: 'Guest not found' })
+    res.status(404).json({ error: "Guest not found" })
   }
 })
 
 // Post route for RSVP
-app.post('/guests', async (req,res) => {
-  const { first_name, last_name, email, phone, allergies, other, isAttending } = req.body
-  const guest = new Guest({ first_name, last_name, email, phone, allergies, other, isAttending })
+app.post("/guests", async (req, res) => {
+  const {
+    first_name,
+    last_name,
+    email,
+    phone,
+    allergies,
+    other,
+    isAttending
+  } = req.body
+  const guest = new Guest({
+    first_name,
+    last_name,
+    email,
+    phone,
+    allergies,
+    other,
+    isAttending
+  })
   try {
     //success
     const savedGuest = await guest.save()
     res.status(201).json(savedGuest)
   } catch (err) {
     //failed
-    res.status(400).json({ message: 'Could not save guest', error: err.errors })
+    res.status(400).json({ message: "Could not save guest", error: err.errors })
   }
 })
 
 // Put route for specific guest ID
-app.put('/guests/:id', async (req, res) => {
+app.put("/guests/:id", async (req, res) => {
   const { id } = req.params
   try {
     //success
-    await Guest.findOneAndUpdate({ '_id': id }, req.body, { new: true })
+    await Guest.findByIdAndUpdate({ _id: id }, req.body, { new: true })
     res.status(201).json()
   } catch (err) {
     //failed
-    res.status(400).json({ message: 'Could not update guest', error: err.errors })
+    res
+      .status(400)
+      .json({ message: "Could not update guest", error: err.errors })
   }
 })
 
 // Delete route specific guest ID
-  app.delete('/guests/:id', async (req, res) => {
-    const { id } = req.params
-    try {
-      //success
-      await Guest.findOneAndDelete({ '_id': id })
-      res.status(201).json()
-    } catch (err) {
-      //failed
-      res.status(404).json({ message: 'Could not delete guest', error: err.errors })
-    }
-  }) 
+app.delete("/guests/:id", async (req, res) => {
+  const { id } = req.params
+  try {
+    //success
+    await Guest.findByIdAndDelete({ _id: id })
+    res.status(201).json()
+  } catch (err) {
+    //failed
+    res
+      .status(404)
+      .json({ message: "Could not delete guest", error: err.errors })
+  }
+})
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)

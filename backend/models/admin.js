@@ -2,12 +2,12 @@ import mongoose from 'mongoose'
 import crypto from 'crypto'
 
 export const Admin = mongoose.model('Admin', {
-  username: {
+  name: {
     type: String,
-    minlength: 2,
-    maxlength: 50,
+    unique: true,
     required: true,
-    unique: true
+    minlength: 2,
+    maxlength: 100
   },
   email: {
     type: String,

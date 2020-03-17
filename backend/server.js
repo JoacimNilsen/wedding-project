@@ -11,10 +11,10 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/wedding-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
-const authenticateUser = async (req, res, next) => {
-  const user = await User.findOne({ accessToken: req.header("Authorization") })
-  if (user) {
-    req.user = user
+const authenticateAdmin = async (req, res, next) => {
+  const admin = await Admin.findOne({ accessToken: req.header("Authorization") })
+  if (admin) {
+    req.admin = admin
     next()
   } else {
     res.status(401).json({ loggedOut: true, message: "You are logged out" })
@@ -43,8 +43,9 @@ app.get("/", (req, res) => {
 // Route to create a admin
 app.post("/admin", async (req, res) => {
   try {
-    const { email, password } = req.body
+    const { name, email, password } = req.body
     const newAdmin = await new Admin({
+      name,
       email,
       password: bcrypt.hashSync(password)
     })
@@ -53,17 +54,18 @@ app.post("/admin", async (req, res) => {
   } catch (err) {
     res
       .status(400)
-      .json({ message: "Error, could not create user", error: err.errors })
+      .json({ message: "Error, could not create admin", error: err.errors })
   }
 })
 
 // Route to login for admin
 app.post("/login", async (req, res) => {
   try {
-    const admin = await Admin.findOne({ email: req.body.email })
-    if (admin && bcrypt.compareSync(req.body.password, admin.password)) {
+    const { email, password } = req.body
+    const admin = await Admin.findOne({ email })
+    if (admin && bcrypt.compareSync(password, admin.password)) {
       res.status(201).json({
-        email: admin.email,
+        name: admin.name,
         adminId: admin._id,
         accessToken: admin.accessToken
       })
@@ -95,7 +97,7 @@ const queryBuilder = (req, res) => {
 }
 
 // Secure endpoint for guestroute, only admin should be able to see this
-app.get("guests", authenticateUser)
+app.get("guests", authenticateAdmin)
 app.get("/guests", async (req, res) => {
   const query = queryBuilder(req, res)
   // If true: filter on query, else: return all guests

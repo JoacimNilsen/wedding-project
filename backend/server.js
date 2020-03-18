@@ -6,7 +6,7 @@ import bcrypt from "bcrypt-nodejs"
 import { Guest } from "./models/guests"
 import { Admin } from "./models/admin"
 
-const API_URL = process.env.API_URL || "http://localhost:8080"
+const API_URL = process.env.API_URL || "https://kn-wedding-project.herokuapp.com/"
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/wedding-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
@@ -175,7 +175,7 @@ app.delete("/guests/:id", async (req, res) => {
   try {
     //success
     await Guest.findByIdAndDelete({ _id: id })
-    res.status(201).json()
+    res.status(201).json({message: 'Deleted'})
   } catch (err) {
     //failed
     res
@@ -184,6 +184,6 @@ app.delete("/guests/:id", async (req, res) => {
   }
 })
 // Start the server
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`)
+app.listen(URL, () => {
+  console.log(`Server running on https://kn-wedding-project.herokuapp.com`)
 })

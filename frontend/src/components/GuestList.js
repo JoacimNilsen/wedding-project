@@ -1,10 +1,9 @@
-
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux"
-import { ui } from "../reducers/ui"
+import { ui } from "reducers/ui"
 import { Button } from 'library/Button'
-import { guests, fetchGuests } from "../reducers/guests"
-import { GuestItem } from "./GuestItem"
+import { guests, fetchGuests } from "reducers/guests"
+import { GuestItem } from "components/GuestItem"
 
 export const GuestList = () => {
   const dispatch = useDispatch()
@@ -12,7 +11,7 @@ export const GuestList = () => {
   const [page, setPage] = useState(1)
   const [searchInput, setSearchInput] = useState('')
   
-  const allGuests = useSelector(state => state.guests?.guests)
+  const allGuests = useSelector(state => state.guests.guests)
   const loading = useSelector(state => state.ui.isLoading)
 
   const handleFilterButtons = filterQuery => {

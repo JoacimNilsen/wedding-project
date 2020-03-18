@@ -29,7 +29,7 @@ export const admins = createSlice({
 export const fetchAdmin = (loginValues) => {
   return dispatch => {
     dispatch(ui.actions.setLoading(true))
-    fetch(`http://localhost:8080/login`, {
+    fetch(`https://kn-wedding-project.herokuapp.com/login`, {
       method: 'POST',
       body: JSON.stringify(loginValues),
       headers: { 'Content-Type': 'application/json' }

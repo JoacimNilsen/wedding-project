@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { ui } from './ui'
 
 // NODE enviroment variables
-const API_URL = process.env.API_URL || "http://localhost:8080"
+const API_URL = process.env.API_URL || "https://kn-wedding-project.herokuapp.com"
 
 export const guests = createSlice({
   name: 'guests',
@@ -64,6 +64,7 @@ export const sendGuests = (guest) => {
 
 //Thunk to delete specific guests
 export const deleteGuests = (guest) => {
+  console.log(deleteGuests)
   return dispatch => {
     dispatch(ui.actions.setLoading(true))
     fetch(`${API_URL}/guests/${guest._id}`, {

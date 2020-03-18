@@ -184,6 +184,6 @@ app.delete("/guests/:id", async (req, res) => {
   }
 })
 // Start the server
-app.listen(URL, () => {
-  console.log(`Server running on https://kn-wedding-project.herokuapp.com`)
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`)
 })

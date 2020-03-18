@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { ui } from './ui'
 
 // NODE enviroment variables
-const API_URL = process.env.API_URL || "https://kn-wedding-project.herokuapp.com"
+const API_URL = process.env.API_URL || "https://kn-wedding-project.herokuapp.com/"
 
 export const guests = createSlice({
   name: 'guests',

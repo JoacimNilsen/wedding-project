@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 export const GuestItem = ({ guest, onClickDelete }) => {
   const { firstName, lastName, email, phone, allergies, other, attending } = guest

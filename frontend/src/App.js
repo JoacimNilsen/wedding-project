@@ -4,7 +4,7 @@ import { GlobalStyle } from 'styles/GlobalStyle'
 import { Main } from 'pages/Main'
 import { Location } from 'pages/Location'
 import { Rsvp } from 'pages/Rsvp'
-import { Admin } from 'pages/Admin'
+import { Guests } from 'pages/Guests'
 import { PrivateRoute } from 'components/PrivateRoute'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
@@ -42,7 +42,7 @@ export const App = () => {
         <Rsvp />
       </Route>
 
-      <PrivateRoute component={Admin} path='/guests' exact />
+      <PrivateRoute component={Guests} path='/guests' exact />
 
     </Switch>
 

@@ -160,7 +160,7 @@ app.put("/guests/:id", async (req, res) => {
   try {
     //success
     await Guest.findByIdAndUpdate({ _id: id }, req.body, { new: true })
-    res.status(201).json()
+    res.status(201).json(guest)
   } catch (err) {
     //failed
     res

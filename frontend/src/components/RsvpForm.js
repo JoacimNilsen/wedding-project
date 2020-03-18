@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { ui } from 'reducers/ui'
 import { sendGuests } from 'reducers/guests'
 import { useDispatch } from 'react-redux'

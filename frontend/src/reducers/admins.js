@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ui } from './ui'
 
-export const users = createSlice({
-  name: 'users',
+export const admins = createSlice({
+  name: 'admins',
   initialState: {
     accessToken: localStorage.getItem('accessToken'),
-    userName: localStorage.getItem('userName')
+    adminName: localStorage.getItem('adminName')
   },
   reducers: {
-    setUserName: (state, action) => {
-      localStorage.setItem('userName', action.payload)
-      state.userName = action.payload
+    setAdminName: (state, action) => {
+      localStorage.setItem('adminName', action.payload)
+      state.adminName = action.payload
     },
-    removeUserName: (state, action) => {
-      state.userName = localStorage.removeItem('userName', action.payload)
+    removeAdminName: (state, action) => {
+      state.adminName = localStorage.removeItem('adminName', action.payload)
     },
     setAccessToken: (state, action) => {
       localStorage.setItem('accessToken', action.payload)
@@ -26,10 +26,10 @@ export const users = createSlice({
   }
 })
 
-export const fetchUser = (loginValues) => {
+export const fetchAdmin = (loginValues) => {
   return dispatch => {
     dispatch(ui.actions.setLoading(true))
-    fetch(`https://kn-wedding-project.herokuapp.com/login`, {
+    fetch(`http://localhost:8080/login`, {
       method: 'POST',
       body: JSON.stringify(loginValues),
       headers: { 'Content-Type': 'application/json' }
@@ -37,8 +37,8 @@ export const fetchUser = (loginValues) => {
       .then(res => res.json())
       .then(json => {
         if (json.notFound !== true) {
-          dispatch(users.actions.setAccessToken(json.accessToken))
-          dispatch(users.actions.setUserName(json.name))
+          dispatch(admins.actions.setAccessToken(json.accessToken))
+          dispatch(admins.actions.setAdminName(json.name))
           dispatch(ui.actions.setLoading(false))
           dispatch(ui.actions.setLoginFailed(false))
           dispatch(ui.actions.setLoginOpen(false))

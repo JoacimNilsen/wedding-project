@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ui } from './ui'
 
+// NODE enviroment variables
+const API_URL = process.env.API_URL || "http://localhost:8080"
+
 export const guests = createSlice({
   name: 'guests',
   initialState: {
@@ -28,7 +31,7 @@ export const fetchGuests = (path) => {
   return dispatch => {
     const accessToken = localStorage.getItem('accessToken')
     dispatch(ui.actions.setLoading(true))
-    fetch(`https://kn-wedding-project.herokuapp.com/guests${path}`, {
+    fetch(`${API_URL}/guests/${path}`, {
       method: 'GET',
       headers: { 'Content-type': 'application/json',
        Authorization: accessToken
@@ -46,7 +49,7 @@ export const fetchGuests = (path) => {
 export const sendGuests = (guest) => {
   return dispatch => {
     dispatch(ui.actions.setLoading(true))
-    fetch(`https://kn-wedding-project.herokuapp.com/guests`, {
+    fetch(`${API_URL}/guests`, {
       method: 'POST',
       body: JSON.stringify(guest),
       headers: { 'Content-Type': 'application/json' }
@@ -63,7 +66,7 @@ export const sendGuests = (guest) => {
 export const deleteGuests = (guest) => {
   return dispatch => {
     dispatch(ui.actions.setLoading(true))
-    fetch(`https://kn-wedding-project.herokuapp.com/guests/${guest._id}`, {
+    fetch(`${API_URL}/guests/${guest._id}`, {
       method: 'DELETE'
     })
     .then(() => {

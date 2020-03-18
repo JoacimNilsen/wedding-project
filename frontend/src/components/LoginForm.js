@@ -2,7 +2,65 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ui } from 'reducers/ui'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUser } from 'reducers/users'
+import { fetchAdmin } from 'reducers/admins'
+import { Input } from 'styles/FormStyle'
+
+const LoginWrapper = styled.section`
+z-index: 1;
+position: absolute;
+top: 50%;
+left: 50%;
+width: 280px;
+transform: translate(-50%, -50%);
+border: solid #FF9900 3px;
+border-radius: 5%;
+background: rgba(0, 0, 0, 0.8);
+`
+
+const FormWrapper = styled.div`
+flex-direction: column;
+text-align: center;
+padding: 0% 10% 10% 10%;
+`
+
+const CardButton = styled.button`
+font-family: 'Open Sans', sans-serif;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+font-size: 24px;
+font-weight: 700;
+color: #fff;
+height: 40px;
+border: none;
+background: transparent;
+transition: 0.6s;
+cursor: pointer;
+&:focus {
+  outline-color: #FF9900;
+  outline-offset: 3px;
+}
+&:hover {
+  color: #FF9900;
+}
+@media (min-width: 668px) {
+  font-size: 16px;
+  font-weight: 400;
+}
+@media (min-width: 992px) {
+  font-size: 20px;
+}
+`
+
+const LoginButtonWrapper = styled.div`
+margin-top: 15px;
+`
+
+const CloseWrapper = styled.div`
+z-index: 2;
+display: flex;
+justify-content: flex-end;
+margin: 5px;
+`
 
 export const LoginForm = () => {
 
@@ -26,7 +84,7 @@ export const LoginForm = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    dispatch(fetchUser(formValues))
+    dispatch(fetchAdmin(formValues))
     clearInputs()
   }
 
@@ -37,12 +95,15 @@ export const LoginForm = () => {
   return (
     <>
     {open && (
-      <div>
+      <LoginWrapper>
+        <CloseWrapper>
+        <CardButton type='button' onClick={close}>X</CardButton>
+        </CloseWrapper>
+        <FormWrapper>
         <form onSubmit={handleLogin}>
-          <button type='button' onClick={close}>X</button>
           <label>
             <p>E-mail</p>
-            <input onChange={e => setFormValues({ ...formValues, email: e.target.value })}
+            <Input onChange={e => setFormValues({ ...formValues, email: e.target.value })}
             value={formValues.email}
             type='email'
             placeholder='email@mail.com'
@@ -54,17 +115,20 @@ export const LoginForm = () => {
 
           <label>
             <p>Password</p>
-            <input onChange={e => setFormValues({ ...formValues, password: e.target.value })}
+            <Input onChange={e => setFormValues({ ...formValues, password: e.target.value })}
             value={formValues.password}
             type='password'
             required
             />
           </label>
-          <button type='submit'>Login</button>
+          <LoginButtonWrapper>
+          <CardButton title='Login' type='submit'>Login</CardButton>
+          </LoginButtonWrapper>
         </form>
+        </FormWrapper>
         {failed && <p>Incorrect user or password</p>}
         {loading && <p>...loading</p>}
-      </div>
+      </LoginWrapper>
     )}
     </>
   )

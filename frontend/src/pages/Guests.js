@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { Navbar } from 'components/Navbar'
 import { ConfirmDelete } from 'components/ConfirmDelete'

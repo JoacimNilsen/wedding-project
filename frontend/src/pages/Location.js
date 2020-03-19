@@ -73,7 +73,6 @@ export const Location = () => {
     <>
     <Navbar />
     <MainWrapper>
-      
     <HeaderWrapper>
       <Header>Where is the wedding?</Header>
     </HeaderWrapper>

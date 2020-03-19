@@ -16,7 +16,7 @@ import { LoginForm } from 'components/LoginForm'
 
 const reducer = combineReducers({
   ui: ui.reducer,
-  guest: guests.reducer,
+  guests: guests.reducer,
   admins: admins.reducer
 })
 
@@ -45,9 +45,7 @@ export const App = () => {
       <PrivateRoute component={Guests} path='/guests' exact />
 
     </Switch>
-
     <Footer />
-
    </BrowserRouter>
    </Provider>
   )

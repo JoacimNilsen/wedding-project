@@ -4,18 +4,7 @@ import { ui } from 'reducers/ui'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAdmin } from 'reducers/admins'
 import { Input } from 'styles/FormStyle'
-
-const LoginWrapper = styled.section`
-z-index: 1;
-position: absolute;
-top: 50%;
-left: 50%;
-width: 280px;
-transform: translate(-50%, -50%);
-border: solid #FF9900 3px;
-border-radius: 5%;
-background: rgba(0, 0, 0, 0.8);
-`
+import { CardWrapper } from 'styles/FormStyle'
 
 const FormWrapper = styled.div`
 flex-direction: column;
@@ -95,7 +84,7 @@ export const LoginForm = () => {
   return (
     <>
     {open && (
-      <LoginWrapper>
+      <CardWrapper>
         <CloseWrapper>
         <CardButton type='button' onClick={close}>X</CardButton>
         </CloseWrapper>
@@ -128,7 +117,7 @@ export const LoginForm = () => {
         </FormWrapper>
         {failed && <p>Incorrect user or password</p>}
         {loading && <p>...loading</p>}
-      </LoginWrapper>
+      </CardWrapper>
     )}
     </>
   )

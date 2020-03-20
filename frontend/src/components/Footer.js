@@ -1,7 +1,7 @@
 import React from "react"
 import { ui } from "reducers/ui"
 import { Link } from "react-router-dom"
-import { NavButton } from "styles/NavbarStyle"
+import { StickyWrapper, FooterButton, Separator, FooterWrapper } from "styles/FooterStyle"
 import { admins } from "reducers/admins"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
@@ -24,18 +24,23 @@ export const Footer = () => {
   }
 
   return (
-    <>
-      <section>
+    <StickyWrapper>
+      <FooterWrapper>
         {!accessToken && (
-          <NavButton onClick={openLoginForm}>Admin Login</NavButton>
+          <FooterButton onClick={openLoginForm}>Admin Login</FooterButton>
         )}
-        {accessToken && <NavButton onClick={handleLogout}>Log out</NavButton>}
         {accessToken && (
           <Link to={"/guests"} tabIndex='-1'>
-            <NavButton>Guests</NavButton>
+            <FooterButton>Guests</FooterButton>
           </Link>
         )}
-      </section>
-    </>
+        {accessToken && (
+          <>
+            <Separator>|</Separator>
+            <FooterButton onClick={handleLogout}>Log out</FooterButton>
+          </>
+        )}
+      </FooterWrapper>
+    </StickyWrapper>
   )
 }

@@ -5,7 +5,7 @@ import { ui } from "reducers/ui"
 import { MenuButton } from "library/MenuButton"
 import { guests, fetchGuests } from "reducers/guests"
 import { GuestItem } from "components/GuestItem"
-import { ListWrapper } from "styles/FormStyle"
+import { GuestListWrapper } from "styles/GuestListStyle"
 
 const ItemWrapper = styled.div`
   display: flex;
@@ -27,6 +27,7 @@ const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 `
 
 const PaginationWrapper = styled.div`
@@ -37,10 +38,10 @@ const PaginationWrapper = styled.div`
 `
 
 const NameInput = styled.input`
-  margin-top: 10px;
   border: solid white 2px;
   background-color: rgba(255, 255, 255, 0.8);
   height: 30px;
+  margin-right: 10px;
   line-height: none;
   padding-left: 5px;
   font-style: italic;
@@ -102,7 +103,7 @@ export const GuestList = () => {
   const hasSpecificGuest = specificGuest.length > 0
 
   //Pagination made in frontend
-  const itemsPerPage = 10
+  const itemsPerPage = 9
   const endIndex = page * itemsPerPage
   const startIndex = endIndex - itemsPerPage
   const currentItems = () => {
@@ -115,7 +116,7 @@ export const GuestList = () => {
   const totalPages = Math.ceil(currentItems().length / itemsPerPage)
 
   return (
-    <div>
+    <GuestListWrapper>
       <FilterWrapper>
         <MenuButton title='Show all' onClick={() => handleFilterButtons("")} />
         <MenuButton
@@ -137,10 +138,10 @@ export const GuestList = () => {
                 type='text'
                 placeholder='Enter first or last name'
               />
-              <button type='submit'>Search</button>
+              <MenuButton title='Search' type='submit' />
             </>
           ) : (
-            <button onClick={() => setSpecificGuest([])}>{filter}</button>
+            <MenuButton title={`Hide ${filter}`} onClick={() => setSpecificGuest([])} />
           )}
         </form>
       </InputWrapper>
@@ -173,6 +174,6 @@ export const GuestList = () => {
           </PaginationWrapper>
         </div>
       )}
-    </div>
+    </GuestListWrapper>
   )
 }

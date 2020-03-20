@@ -1,14 +1,15 @@
 import React from 'react'
 import { Navbar } from 'components/Navbar'
-import { MainWrapper } from 'library/MainWrapper'
+import { MainWrapper } from 'styles/MainWrapper'
 import { RsvpForm } from 'components/RsvpForm'
 import { RsvpConfirm } from 'components/RsvpConfirm'
 
 export const Rsvp = () => {
   return (
     <>
-    <Navbar />
+    
       <MainWrapper>
+        <Navbar />
         <RsvpForm />
         <RsvpConfirm />
       </MainWrapper>

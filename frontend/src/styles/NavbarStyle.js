@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const NavWrapper = styled.section`
+export const NavWrapper = styled.header`
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -12,8 +12,8 @@ export const NavWrapper = styled.section`
   padding: 10px;
   background: ${props => (props.active ? 'rgba(0, 0, 0, 0.8)' : 'none')};  
   @media (min-width: 668px) {
-    position: relative;
-    background: none;
+    position: sticky;
+    background: #2D2A2A;
   }
 `
 export const BurgerWrapper = styled.div`
@@ -48,7 +48,6 @@ export const NavLinks = styled.nav`
   }
 `
 export const NavButton = styled.button`
-  font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-size: 26px;

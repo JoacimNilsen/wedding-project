@@ -1,19 +1,35 @@
-import React from 'react'
-import styled from 'styled-components'
-import { ui } from 'reducers/ui'
-import { deleteGuests } from 'reducers/guests'
-import { useDispatch, useSelector } from 'react-redux'
-import { Button } from 'library/Button'
+import React from "react"
+import styled from "styled-components"
+import { ui } from "reducers/ui"
+import { deleteGuests } from "reducers/guests"
+import { useDispatch, useSelector } from "react-redux"
+import { MenuButton } from "library/MenuButton"
+
+const AlertWrapper = styled.div`
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+position: sticky;
+width: 350px;
+height: 140px;
+border: 1px solid white;
+border-radius: 0px 30px 0px 30px;
+bottom: 50%;
+background: black;
+z-index: 2;
+`
 
 const ButtonWrapper = styled.div`
-  width: 50%;
   display: flex;
-  justify-content: space-evenly;
+  width: 320px;
+  justify-content: space-between;
   align-items: center;
 `
 
-export const ConfirmDelete = () => {
 
+
+export const ConfirmDelete = () => {
   const dispatch = useDispatch()
   const open = useSelector(state => state.ui.isConfirmDeleteOpen)
   const guest = useSelector(state => state.guests.guest)
@@ -30,13 +46,13 @@ export const ConfirmDelete = () => {
   return (
     <>
       {open && (
-        <div>
+        <AlertWrapper>
           <p>Are you sure you want to delete guest?</p>
           <ButtonWrapper>
-            <Button type='button' title='Yes' onClick={handleYes} />
-            <Button type='button' title='No' onClick={handleNo} />
+            <MenuButton type='button' title='Yes' onClick={handleYes} />
+            <MenuButton type='button' title='No' onClick={handleNo} />
           </ButtonWrapper>
-        </div>
+        </AlertWrapper>
       )}
     </>
   )

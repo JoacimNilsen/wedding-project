@@ -5,6 +5,7 @@ import { Main } from 'pages/Main'
 import { Location } from 'pages/Location'
 import { Rsvp } from 'pages/Rsvp'
 import { Guests } from 'pages/Guests'
+import { Gallery } from 'pages/Gallery'
 import { PrivateRoute } from 'components/PrivateRoute'
 import { Provider } from 'react-redux'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
@@ -13,6 +14,7 @@ import { ui } from 'reducers/ui'
 import { admins } from 'reducers/admins'
 import { Footer } from 'components/Footer'
 import { LoginForm } from 'components/LoginForm'
+import { Music } from 'pages/Music'
 
 const reducer = combineReducers({
   ui: ui.reducer,
@@ -40,6 +42,14 @@ export const App = () => {
 
       <Route path='/rsvp' exact>
         <Rsvp />
+      </Route>
+
+      <Route path='/music' exact>
+        <Music />
+      </Route>
+
+      <Route path='/gallery' exact>
+        <Gallery />
       </Route>
 
       <PrivateRoute component={Guests} path='/guests' exact />

@@ -3,7 +3,8 @@ import { ui } from "reducers/ui"
 import { sendGuests } from "reducers/guests"
 import { useDispatch } from "react-redux"
 import { Button } from "library/Button"
-import { Input, RsvpWrapper, RadioWrapper, RadioButtonWrapper, RsvpStyle } from "styles/FormStyle"
+import { RadioInput, TextArea, Input, RadioWrapper, RadioButtonWrapper, RsvpStyle } from "styles/FormStyle"
+import { LabelText } from 'styles/TextStyle'
 
 export const RsvpForm = () => {
   const dispatch = useDispatch()
@@ -45,10 +46,10 @@ export const RsvpForm = () => {
     formValues.isAttending !== ""
 
   return (
-    <RsvpWrapper>
+    
       <RsvpStyle onSubmit={handleSubmit}>
         <label>
-          <p>First Name *</p>
+          <LabelText>First Name *</LabelText>
           <Input
             onChange={event =>
               setFormValues({ ...formValues, first_name: event.target.value })
@@ -63,7 +64,7 @@ export const RsvpForm = () => {
         </label>
 
         <label>
-          <p>Last name *</p>
+          <LabelText>Last name *</LabelText>
           <Input
             onChange={event =>
               setFormValues({ ...formValues, last_name: event.target.value })
@@ -78,7 +79,7 @@ export const RsvpForm = () => {
         </label>
 
         <label>
-          <p>E-mail *</p>
+          <LabelText>E-mail *</LabelText>
           <Input
             onChange={event =>
               setFormValues({ ...formValues, email: event.target.value })
@@ -92,7 +93,7 @@ export const RsvpForm = () => {
         </label>
 
         <label>
-          <p>Phone number</p>
+          <LabelText>Phone number</LabelText>
           <Input
             onChange={event =>
               setFormValues({ ...formValues, phone: event.target.value })
@@ -104,7 +105,7 @@ export const RsvpForm = () => {
         </label>
 
         <label>
-          <p>Allergies</p>
+          <LabelText>Allergies</LabelText>
           <Input
             onChange={event =>
               setFormValues({ ...formValues, allergies: event.target.value })
@@ -116,8 +117,8 @@ export const RsvpForm = () => {
         </label>
 
         <label>
-          <p>Other</p>
-          <textarea
+          <LabelText>Other</LabelText>
+          <TextArea
             onChange={event =>
               setFormValues({ ...formValues, other: event.target.value })
             }
@@ -129,10 +130,10 @@ export const RsvpForm = () => {
         </label>
 
         
-          <p>Will we see you at the wedding?</p>
+          <LabelText>Will you come to the wedding?</LabelText>
           <RadioWrapper>
           <RadioButtonWrapper>
-            <Input
+            <RadioInput
               onChange={event =>
                 setFormValues({
                   ...formValues,
@@ -145,10 +146,10 @@ export const RsvpForm = () => {
               checked={formValues.isAttending === "true"}
               required
             />
-            <p>Yes</p>
+            <LabelText>Yes</LabelText>
           </RadioButtonWrapper>
           <RadioButtonWrapper>
-            <Input
+            <RadioInput
               onChange={event =>
                 setFormValues({
                   ...formValues,
@@ -161,13 +162,13 @@ export const RsvpForm = () => {
               checked={formValues.isAttending === "false"}
               required
             />
-            <p>No</p>
+            <LabelText>No</LabelText>
           </RadioButtonWrapper>
         </RadioWrapper>
 
-        <Button type='submit' title='submit' disabled={!enabled} />
-        {!enabled && <p>Please fill required fields</p>}
+        <Button type='submit' title='submit'/>
+        <LabelText>* Required fields</LabelText>
       </RsvpStyle>
-    </RsvpWrapper>
+   
   )
 }

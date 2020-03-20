@@ -16,7 +16,6 @@ export const Header = styled.h1`
   letter-spacing: 1.5px;
   font-size: 18px;
   text-align: center;
-  color: #FFF2EA;
   @media (min-width: 668px) {
     font-size: 25px;
   }
@@ -26,7 +25,13 @@ export const Header = styled.h1`
   letter-spacing: 1.5px;
   font-size: 16px;
   text-align: center;
-  color: #FFF2EA;
+  @media (min-width: 668px) {
+    font-size: 21px;
+  }
+  `
+
+  export const LabelText = styled.p`
+  font-weight: 700;
   @media (min-width: 668px) {
     font-size: 21px;
   }

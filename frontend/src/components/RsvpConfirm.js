@@ -1,6 +1,6 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { ui } from 'reducers/ui'
+import React from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { ui } from "reducers/ui"
 
 export const RsvpConfirm = () => {
   const dispatch = useDispatch()
@@ -15,7 +15,9 @@ export const RsvpConfirm = () => {
       {open && (
         <div>
           <p>See you at the wedding!</p>
-          <button type='button' onClick={close}>Done!</button>
+          <button type='button' onClick={close}>
+            Done!
+          </button>
         </div>
       )}
     </>

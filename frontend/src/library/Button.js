@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
 export const MainButton = styled.button`
 height 60px;
@@ -29,6 +29,5 @@ cursor: pointer;
 `
 
 export const Button = ({ onClick, title }) => (
-
   <MainButton onClick={onClick}>{title}</MainButton>
 )

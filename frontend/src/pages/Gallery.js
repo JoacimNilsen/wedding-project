@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { MainWrapper } from 'styles/MainWrapper'
-import { Navbar } from 'components/Navbar'
-import { Header } from 'styles/TextStyle'
+import React from "react"
+import styled from "styled-components"
+import { MainWrapper } from "styles/MainWrapper"
+import { Navbar } from "components/Navbar"
+import { Header } from "styles/TextStyle"
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -12,13 +12,12 @@ const HeaderWrapper = styled.div`
 `
 
 export const Gallery = () => {
-  
   return (
     <MainWrapper>
-    <Navbar />
-    <HeaderWrapper>
-      <Header>under construction</Header>
-    </HeaderWrapper>
+      <Navbar />
+      <HeaderWrapper>
+        <Header>under construction</Header>
+      </HeaderWrapper>
     </MainWrapper>
   )
 }

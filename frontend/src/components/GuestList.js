@@ -141,7 +141,10 @@ export const GuestList = () => {
               <MenuButton title='Search' type='submit' />
             </>
           ) : (
-            <MenuButton title={`Hide ${filter}`} onClick={() => setSpecificGuest([])} />
+            <MenuButton
+              title={`Hide ${filter}`}
+              onClick={() => setSpecificGuest([])}
+            />
           )}
         </form>
       </InputWrapper>
@@ -169,7 +172,8 @@ export const GuestList = () => {
               )}
             </div>
             <p>
-              Number of guests: {currentItems().length} | Page {page} of {totalPages}
+              Number of guests: {currentItems().length} | Page {page} of{" "}
+              {totalPages}
             </p>
           </PaginationWrapper>
         </div>

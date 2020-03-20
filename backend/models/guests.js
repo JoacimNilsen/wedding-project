@@ -31,13 +31,5 @@ export const Guest = mongoose.model('Guest', {
   isAttending: {
     type: Boolean,
     required: true
-  },
-  addedAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
   }
 })

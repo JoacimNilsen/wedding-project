@@ -1,23 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
-import hero from 'assets/hero.jpg'
+import React from "react"
+import styled from "styled-components"
+import hero from "assets/hero.jpg"
 
 export const Hero = styled.div`
-background-image: url(${hero});
-background-position: 50% 20%;
-background-size: cover;
-border: 3px solid #FFF2EA;
-border-radius: 50%;
-width: 500px;
-height: 500px;
-display: none;
+  background-image: url(${hero});
+  background-position: 50% 20%;
+  background-size: cover;
+  border: 3px solid #fff2ea;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  display: none;
   @media (min-width: 851px) {
     display: block;
   }
 `
 
 export const HeroImage = () => {
-  return (
-    <Hero />
-  )
+  return <Hero />
 }

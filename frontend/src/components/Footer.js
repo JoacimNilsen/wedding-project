@@ -1,7 +1,12 @@
 import React from "react"
 import { ui } from "reducers/ui"
 import { Link } from "react-router-dom"
-import { StickyWrapper, FooterButton, Separator, FooterWrapper } from "styles/FooterStyle"
+import {
+  StickyWrapper,
+  FooterButton,
+  Separator,
+  FooterWrapper
+} from "styles/FooterStyle"
 import { admins } from "reducers/admins"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"

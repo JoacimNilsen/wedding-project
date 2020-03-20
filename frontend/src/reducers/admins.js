@@ -1,38 +1,38 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { ui } from './ui'
+import { createSlice } from "@reduxjs/toolkit"
+import { ui } from "./ui"
 
 export const admins = createSlice({
-  name: 'admins',
+  name: "admins",
   initialState: {
-    accessToken: localStorage.getItem('accessToken'),
-    adminName: localStorage.getItem('adminName')
+    accessToken: localStorage.getItem("accessToken"),
+    adminName: localStorage.getItem("adminName")
   },
   reducers: {
     setAdminName: (state, action) => {
-      localStorage.setItem('adminName', action.payload)
+      localStorage.setItem("adminName", action.payload)
       state.adminName = action.payload
     },
     removeAdminName: (state, action) => {
-      state.adminName = localStorage.removeItem('adminName', action.payload)
+      state.adminName = localStorage.removeItem("adminName", action.payload)
     },
     setAccessToken: (state, action) => {
-      localStorage.setItem('accessToken', action.payload)
+      localStorage.setItem("accessToken", action.payload)
       state.accessToken = action.payload
     },
     removeAccessToken: (state, action) => {
-      localStorage.removeItem('accessToken', action.payload)
-      state.accessToken = ''
+      localStorage.removeItem("accessToken", action.payload)
+      state.accessToken = ""
     }
   }
 })
 
-export const fetchAdmin = (loginValues) => {
+export const fetchAdmin = loginValues => {
   return dispatch => {
     dispatch(ui.actions.setLoading(true))
     fetch(`http://localhost:8080/login`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(loginValues),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { "Content-Type": "application/json" }
     })
       .then(res => res.json())
       .then(json => {
@@ -47,6 +47,6 @@ export const fetchAdmin = (loginValues) => {
           dispatch(ui.actions.setLoginFailed(true))
         }
       })
-      .catch(err => console.log('error', err))
+      .catch(err => console.log("error", err))
   }
 }

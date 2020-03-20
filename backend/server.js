@@ -6,7 +6,7 @@ import bcrypt from "bcrypt-nodejs"
 import { Guest } from "./models/guests"
 import { Admin } from "./models/admin"
 
-const API_URL = process.env.API_URL || "https://kn-wedding-project.herokuapp.com/"
+const API_URL = process.env.API_URL || "http://localhost:8080"
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/wedding-project"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise

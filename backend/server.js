@@ -5,6 +5,7 @@ import mongoose from "mongoose"
 import bcrypt from "bcrypt-nodejs"
 import { Guest } from "./models/guests"
 import { Admin } from "./models/admin"
+import { Image } from './models/images'
 
 const API_URL = process.env.API_URL || "http://localhost:8080"
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/wedding-project"
@@ -183,6 +184,25 @@ app.delete("/guests/:id", async (req, res) => {
       .json({ message: "Could not delete guest", error: err.errors })
   }
 })
+
+
+// Get route for uploaded images
+app.get("/gallery", async (req, res) => {
+  const images = await.Image.find()
+  res.json(image)
+})
+
+// Post route for Imageupload
+app.post("/gallery", async (req, res) => {
+  const image = new Image(req.body)
+  try {
+    //success
+    const savedImage = await image.save()
+    res.status(201).json(savedImage)
+  } catch (err) {
+    //failed
+    res.status(400).json({ message: "Could not upload image", error: err.errors })
+  }
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)

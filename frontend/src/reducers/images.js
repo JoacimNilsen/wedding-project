@@ -26,7 +26,7 @@ export const images = createSlice({
 export const sendImages = image => {
   return dispatch => {
     dispatch(ui.actions.setLoading(true))
-    fetch(`${API_URL}/images`, {
+    fetch(`${API_URL}/gallery`, {
       method: 'POST'
       body: JSON.stringify(image)
       headers: { 'Content-Type': 'application/json' }

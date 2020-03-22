@@ -50,7 +50,6 @@ export const App = () => {
           <Route path='/gallery' exact>
             <Gallery />
           </Route>
-
           <PrivateRoute component={Guests} path='/guests' exact />
         </Switch>
         <Footer />

@@ -6,7 +6,9 @@ import bcrypt from 'bcrypt-nodejs'
 import { Guest } from './models/guests'
 import { Admin } from './models/admin'
 
-const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/wedding-project'
+const mongoUrl =
+	process.env.MONGO_URL ||
+	'mongodb+srv://gerilla-korv:vuw656iaj324@cluster0-pcl1p.mongodb.net/wedding-project?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 

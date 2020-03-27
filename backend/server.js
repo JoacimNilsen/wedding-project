@@ -202,7 +202,7 @@ app.delete('/guests/:id', async (req, res) => {
 //     //failed
 //     res.status(400).json({ message: "Could not upload image", error: err.errors })
 //   }
-// // Start the server
-// app.listen(port, () => {
-//   console.log(`Server running on http://localhost:${port}`)
-// })
+// Start the server
+app.listen(port, () => {
+	console.log(`Server running on http://localhost:${port}`)
+})

@@ -5,7 +5,6 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt-nodejs'
 import { Guest } from './models/guests'
 import { Admin } from './models/admin'
-import { Image } from './models/images'
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/wedding-project'
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })

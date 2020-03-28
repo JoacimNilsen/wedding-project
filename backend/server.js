@@ -10,25 +10,13 @@ const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/wedding-project'
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
-const authenticateAdmin = async (req, res, next) => {
-	const admin = await Admin.findOne({
-		accessToken: req.header('Authorization')
-	})
-	if (admin) {
-		req.admin = admin
-		next()
-	} else {
-		res.status(401).json({ loggedOut: true, message: 'You are logged out' })
-	}
-}
-
 const port = process.env.PORT || 8080
 const app = express()
 
 // Middlewares
 app.use(cors())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use((req, res, next) => {
 	if (mongoose.connection.readyState === 1) {
 		next()
@@ -36,6 +24,24 @@ app.use((req, res, next) => {
 		res.status(503).json({ error: 'HTTP Error 503. Service unavaliable' })
 	}
 })
+
+const authenticateAdmin = async (req, res, next) => {
+	try {
+		const admin = await Admin.findOne({
+			accessToken: req.header('Authorization')
+		})
+		if (admin) {
+			req.admin = admin
+			next()
+		} else {
+			res.status(401).json({ loggedOut: true, message: 'You are logged out' })
+		}
+	} catch (err) {
+		res
+			.status(403)
+			.json({ message: 'Access token missing', errors: err.errors })
+	}
+}
 
 // Routes
 app.get('/', (req, res) => {

@@ -28,7 +28,7 @@ export const fetchGuests = path => {
 	return dispatch => {
 		const accessToken = localStorage.getItem('accessToken')
 		dispatch(ui.actions.setLoading(true))
-		fetch(`${API_URL}/guests/${path}`, {
+		fetch(`https://wedding-project-fixed.herokuapp.com/guests/${path}`, {
 			method: 'GET',
 			headers: {
 				'Content-type': 'application/json',

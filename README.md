@@ -6,6 +6,8 @@ My friends are getting married so I decided to make a website for their wedding,
 My stretch goal was to make a gallery in wich guests could upload images from the wedding and the party. I did not have time with this but I am currently working on it even to school is finished.
 
 Deployed demo site: https://engerdahl-wedding.netlify.com/
+email: demo@demo.com
+password: demo
 
 ##Technologies used
 
